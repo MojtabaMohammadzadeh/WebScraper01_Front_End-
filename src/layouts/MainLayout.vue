@@ -8,6 +8,7 @@
           round
           icon="menu"
           aria-label="Menu"
+
           @click="toggleLeftDrawer"
         />
 
@@ -15,7 +16,7 @@
           Web Scraper App
         </q-toolbar-title>
 
-        <div>by Mojtaba</div>
+        <div><img class="logo2" src="../assets/logo.png" alt=""></div>
       </q-toolbar>
     </q-header>
 
@@ -53,18 +54,21 @@ import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'MainLayout',
 
-  setup () {
-    const leftDrawerOpen = ref(false)
-
+  data: function () {
     return {
+      leftDrawerOpen: ref(false)
 
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+    }
+  },
+
+  methods: {
+    toggleLeftDrawer () {
+      this.leftDrawerOpen = !this.leftDrawerOpen
     }
   }
+
 })
+
 </script>
 
 <style scoped>
@@ -93,5 +97,9 @@ li:hover{
   background-color: rgba(165, 188, 238, 0.4);
   transition:200ms ease-out 400ms;
   cursor: pointer;
+}
+.logo2{
+  width: 50px;
+  height: auto;
 }
 </style>
