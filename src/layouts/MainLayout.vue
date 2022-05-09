@@ -28,15 +28,16 @@
         <q-item-label
           header
         >
-          <br/>
-          <hr>
+         <img class="myLogo" src="../assets/logo.png" alt="Mojtaba Mohammadzadeh">
+
         </q-item-label>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <ul class="navbarList">
+          <li><router-link to="/Home" class="myRouter"><span class="material-icons"><q-icon name="home"/></span>Home</router-link></li>
+          <li><router-link to="/About" class="myRouter"><span class="material-icons"><q-icon name="account_circle" /></span> About</router-link></li>
+          <li><router-link to="/Contact" class="myRouter"><span class="material-icons"><q-icon name="whatsapp" /></span> Contact</router-link></li>
+        </ul>
+
       </q-list>
     </q-drawer>
 
@@ -48,42 +49,15 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Home',
-    caption: '',
-    icon: 'home',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'About',
-    caption: '',
-    icon: 'contacts',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Contact Me',
-    caption: '',
-    icon: 'whatsapp',
-    link: 'https://chat.quasar.dev'
-  }
-
-]
 
 export default defineComponent({
   name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
 
   setup () {
     const leftDrawerOpen = ref(false)
 
     return {
-      essentialLinks: linksList,
+
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
@@ -92,3 +66,32 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.myLogo{
+ margin-left: 3em;
+ border-radius: 50%;
+ box-shadow: 3px 5px 10px 5px rgba(0, 0, 255, .2);
+}
+.navbarList{
+  list-style-type: none;
+  }
+  li{
+    margin-bottom: 2em;
+  }
+.material-icons{
+  margin-right: 10px;
+  font-size: 1.5em;
+}
+.myRouter{
+  color: black;
+  text-decoration: none;
+  font-size: 1.5em;
+
+}
+li:hover{
+  background-color: rgba(165, 188, 238, 0.4);
+  transition:200ms ease-out 400ms;
+  cursor: pointer;
+}
+</style>
